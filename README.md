@@ -16,18 +16,18 @@ Initialize and integrate **contour** like so:
 package main
 
 import (
-  "net/http"
-  "github.com/bobek-balinek/contour"
+	"net/http"
+	"github.com/bobek-balinek/contour"
 )
 
 var tmpl *contour.Engine
 
 func init() {
-  tmpl = contour.New("./views", ".html")
+	tmpl = contour.New("./views", ".html")
 }
 
 func main() {
-  mux := http.NewServeMux()
+	mux := http.NewServeMux()
 	mux.HandleFunc("/", index)
 
 	port := ":3000"
@@ -37,14 +37,14 @@ func main() {
 
 func index(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-  w.WriteHeader(http.StatusOK)
+	w.WriteHeader(http.StatusOK)
 
-  tmpl.Render(w, "index", map[string]interface{}{
+	tmpl.Render(w, "index", map[string]interface{}{
 		"Title": "Hello World",
 	}, "layouts/default")
 
 	if _, err := w.Write([]byte(out)); err != nil {
-    w.Write([]byte(err.Error()))
-  }
+		w.Write([]byte(err.Error()))
+	}
 }
 ```
