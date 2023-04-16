@@ -1,3 +1,7 @@
+// Package contour is a simple and fast template engine for Go.
+//
+// It features layouts, simple partial includes and flash messages.
+// Template files can be loaded at runtime, or from a go:embed directive.
 package contour
 
 import (
